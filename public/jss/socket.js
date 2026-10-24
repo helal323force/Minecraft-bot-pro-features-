@@ -1,0 +1,1 @@
+window.botSocket = io({transports:["websocket","polling"]});window.botSocket.on("connect",()=>console.info("socket connected"));window.botSocket.on("connect_error",e=>console.warn("socket:",e.message));
