@@ -1,0 +1,8 @@
+{
+  "name": "Minecraft AFK Bot",
+  "short_name": "AFK Bot",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#0b1220"
+}

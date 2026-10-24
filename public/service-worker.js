@@ -1,0 +1,1 @@
+const CACHE="afk-bot-v3-shell";const SHELL=["/","/login","/setup","/analytics","/css/app.css","/js/app.js","/js/socket.js"];self.addEventListener("install",e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(SHELL).catch(()=>{}))));self.addEventListener("fetch",e=>{if(e.request.method==="GET")e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request)));});
