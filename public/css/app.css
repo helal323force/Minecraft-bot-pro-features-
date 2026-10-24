@@ -1,0 +1,2 @@
+/* Optional custom dashboard styles. Tailwind CDN supplies the base UI. */
+:root{color-scheme:dark}button,a{transition:opacity .12s ease}button:hover{opacity:.88}
