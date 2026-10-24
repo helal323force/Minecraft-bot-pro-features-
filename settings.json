@@ -1,0 +1,198 @@
+{
+  "name": "AFK Bot v3",
+  "bot-account": {
+    "username": "AFKBot",
+    "password": "",
+    "type": "offline"
+  },
+  "server": {
+    "ip": "localhost",
+    "port": 25565,
+    "version": "1.20.1",
+    "try-creative": false
+  },
+  "position": {
+    "enabled": true,
+    "x": 0,
+    "y": 100,
+    "z": 0
+  },
+  "utils": {
+    "auto-auth": {
+      "enabled": false,
+      "password": ""
+    },
+    "anti-afk": {
+      "enabled": true,
+      "sneak": true
+    },
+    "chat-messages": {
+      "enabled": false,
+      "repeat": true,
+      "repeat-delay": 120,
+      "messages": [
+        "I'm online."
+      ]
+    },
+    "chat-log": true,
+    "auto-reconnect": true,
+    "auto-reconnect-delay": 3000,
+    "max-reconnect-delay": 120000
+  },
+  "movement": {
+    "enabled": false,
+    "circle-walk": {
+      "enabled": false,
+      "radius": 4,
+      "speed": 3000
+    },
+    "look-around": {
+      "enabled": true,
+      "interval": 5000
+    },
+    "random-jump": {
+      "enabled": false,
+      "interval": 10000
+    }
+  },
+  "modules": {
+    "avoidMobs": true,
+    "combat": true,
+    "beds": false,
+    "chat": true,
+    "console-commands": true,
+    "auto_mine": {
+      "enabled": false,
+      "targets": [
+        "iron_ore",
+        "diamond_ore",
+        "coal_ore"
+      ],
+      "radius": 32,
+      "max_targets_per_cycle": 5,
+      "require_tool": true
+    },
+    "auto_farm": {
+      "enabled": false,
+      "radius": 16,
+      "crops": [
+        "wheat",
+        "carrots",
+        "potatoes",
+        "beetroots"
+      ]
+    },
+    "auto_fish": {
+      "enabled": false
+    },
+    "auto_chop": {
+      "enabled": false,
+      "radius": 32,
+      "tree_types": [
+        "oak",
+        "birch",
+        "spruce"
+      ]
+    },
+    "auto_trade": {
+      "enabled": false,
+      "item_wanted": "emerald",
+      "item_give": "wheat"
+    },
+    "auto_build": {
+      "enabled": false,
+      "schematic_path": null
+    }
+  },
+  "combat": {
+    "attack-mobs": true,
+    "auto-eat": true,
+    "pvp_mode": false,
+    "ignore_players": [],
+    "ignore_mobs": []
+  },
+  "discord": {
+    "enabled": false,
+    "botToken": "ENV:DISCORD_BOT_TOKEN",
+    "guildId": "ENV:DISCORD_GUILD_ID",
+    "allowedChannels": [],
+    "adminRoles": [],
+    "prefix": "!",
+    "chat_bridge": {
+      "enabled": false,
+      "channelId": "ENV:DISCORD_BRIDGE_CHANNEL_ID"
+    },
+    "tts_alerts": {
+      "enabled": false,
+      "events": [
+        "kick",
+        "crash",
+        "disconnect",
+        "low_health"
+      ]
+    },
+    "webhookUrl": "",
+    "events": {
+      "connect": true,
+      "disconnect": true,
+      "chat": false
+    }
+  },
+  "chat": {
+    "respond": true
+  },
+  "ai": {
+    "enabled": true,
+    "primary": "gemini",
+    "fallbacks": [
+      "groq",
+      "openai"
+    ],
+    "personality": "friendly, playful, uses a bit of Bangla + English mix, keeps answers under 200 chars",
+    "system_prompt": "You are an AFK Minecraft bot player named {name}. Respond concisely to in-game chat.",
+    "gemini": {
+      "apiKey": "ENV:GEMINI_API_KEY",
+      "model": "gemini-1.5-flash"
+    },
+    "groq": {
+      "apiKey": "ENV:GROQ_API_KEY",
+      "model": "llama-3.1-8b-instant"
+    },
+    "openai": {
+      "apiKey": "ENV:OPENAI_API_KEY",
+      "model": "gpt-4o-mini"
+    }
+  },
+  "ai_brain": {
+    "enabled": false,
+    "tick_interval": 30,
+    "max_requests_per_hour": 100
+  },
+  "tracker": {
+    "enabled": true,
+    "watch_list": [],
+    "discord_notify": false
+  },
+  "tasks": [],
+  "proxy": {
+    "enabled": false,
+    "list": [],
+    "rotate_on_kick": true
+  },
+  "auto_update": {
+    "enabled": false,
+    "repo": "",
+    "branch": "main",
+    "check_interval_min": 30
+  },
+  "restore_position": false,
+  "accounts": [
+    {
+      "id": "main",
+      "username": "ENV:MC_USERNAME",
+      "password": "ENV:MC_PASSWORD",
+      "type": "offline",
+      "enabled": true
+    }
+  ]
+}
