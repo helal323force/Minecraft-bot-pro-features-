@@ -1,0 +1,4 @@
+// Auto-miner: finds configured ore blocks and digs nearest targets. Enable cautiously.
+const {goals}=require("mineflayer-pathfinder");
+async function mineCycle(instance,config){const b=instance.bot,c=config.modules?.auto_mine;if(!b?.entity||!c?.enabled)throw Error("Auto-mine is disabled or bot is not spawned");let mined=0;const start=b.entity.position.clone();for(const name of c.targets||[]){const id=b.registry.blocksByName[name]?.id;if(!id)continue;const blocks=b.findBlocks({matching:id,maxDistance:Number(c.radius)||32,count:Number(c.max_targets_per_cycle)||5});for(const pos of blocks){if(mined>=(c.max_targets_per_cycle||5))break;const block=b.blockAt(pos);if(!block?.diggable)continue;await b.pathfinder.goto(new goals.GoalNear(pos.x,pos.y,pos.z,1));await b.dig(block);mined++;}}return {mined,start:{x:start.x,y:start.y,z:start.z}};}
+module.exports={mineCycle};

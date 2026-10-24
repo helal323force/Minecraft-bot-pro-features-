@@ -1,0 +1,4 @@
+// Optional git update checker. Does not execute a pull automatically on managed hosts.
+const {execFile}=require("child_process");
+function start(config,addLog){if(!config.auto_update?.enabled||!config.auto_update.repo)return()=>{};const run=()=>{if(process.env.RENDER||process.env.RAILWAY_ENVIRONMENT){addLog("[Update] Managed host detected; automatic git pull skipped. Redeploy from provider instead.","warn");return;}execFile("git",["fetch","origin",config.auto_update.branch||"main"],{timeout:30000},(err)=>{if(err)return addLog(`[Update] git fetch failed: ${err.message}`,"warn");execFile("git",["rev-parse","HEAD"],(e,a)=>execFile("git",["rev-parse",`origin/${config.auto_update.branch||"main"}`],(e2,b)=>{if(!e&&!e2&&a.trim()!==b.trim())addLog("[Update] New commit available; review and restart manually.","warn");}));});};const t=setInterval(run,Math.max(5,Number(config.auto_update.check_interval_min)||30)*60000);return()=>clearInterval(t);}
+module.exports={start};

@@ -1,0 +1,3 @@
+// Conservative auto-trade helper; selects a villager and opens its trade window.
+async function trade(instance,config){const b=instance.bot,c=config.modules?.auto_trade;if(!b?.entity||!c?.enabled)throw Error("Auto-trade disabled");const villager=Object.values(b.entities||{}).filter(e=>e.name==="villager"&&e.position.distanceTo(b.entity.position)<16).sort((a,z)=>a.position.distanceTo(b.entity.position)-z.position.distanceTo(b.entity.position))[0];if(!villager)throw Error("No nearby villager");await b.lookAt(villager.position.offset(0,1,0));const window=await b.openVillager(villager);return {opened:true,trades:window.trades?.length||0,note:"Review available trades before automated execution."};}
+module.exports={trade};

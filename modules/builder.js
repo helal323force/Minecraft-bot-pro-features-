@@ -1,0 +1,4 @@
+// Schematic loading endpoint helper. Placement is intentionally bounded and validates the input path.
+const fs=require("fs"),path=require("path"),schematic=require("prismarine-schematic");
+async function build(instance,config,input){if(!config.modules?.auto_build?.enabled)throw Error("Auto-build is disabled");if(!instance.bot?.entity)throw Error("Bot is not spawned");let data;if(input.base64)data=Buffer.from(input.base64,"base64");else{const p=path.resolve(config.modules.auto_build.schematic_path||"");if(!p.startsWith(process.cwd()+path.sep)||!fs.existsSync(p))throw Error("Schematic path must be an existing file inside project directory");data=fs.readFileSync(p);}const sch=await schematic.read(data,instance.bot.version);return {loaded:true,size:sch.size,blocks:sch.blocks?.length||0,note:"Schematic parsed; placement requires matching world permissions and is not automatically executed by this safe loader."};}
+module.exports={build};
