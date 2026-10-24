@@ -1,12 +1,12 @@
 {
-  "name": "AFK Bot v3",
+  "name": "AFK Bot",
   "bot-account": {
-    "username": "AFKBot",
+    "username": "AFKBjjot",
     "password": "",
     "type": "offline"
   },
   "server": {
-    "ip": "localhost",
+    "ip": "halalsmp.mcsh.io",
     "port": 25565,
     "version": "1.20.1",
     "try-creative": false
